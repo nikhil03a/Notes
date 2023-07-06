@@ -29,6 +29,20 @@ app.post("/post",(req,res)=>{
         }
     })
 })
+app.post("/fetch",(req,res)=>{
+    if(req.body.search === ''){
+        db.query("select * from notes",(err,data)=>{
+            if(err) console.log(err);
+            res.json(data);
+        })
+    }else{
+        const search = req.body.search.toLowerCase();
+        db.query("select * from notes where LOWER(name) like ?", [`%${search}%`],(err,data)=>{
+            if(err) console.log(err);
+            res.json(data);
+        })
+    }
+})
 app.listen(8800, () => {
     console.log("Connected to Backend");
 })

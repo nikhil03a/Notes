@@ -52,6 +52,8 @@ const PostNote = () => {
     var minDate = year + '-' + month + '-' + day;
     return (
         <div className='m-20'>
+            <h2 className='font-mono text-2xl font-bold'>Post a Note</h2>
+            <br></br>
             <div className='flex flex-col'>
                 <label className='text-lg font-mono'>Name: </label>
                 <input type='text' name='name' value={data.name} onChange={handleChange} className='border-black shadow-md p-3'></input><br></br>
